@@ -26,18 +26,20 @@ text-align: center;">
             <div class="alert alert-danger" role="alert" v-if="errored">
                 Database not connected.
             </div>
-            <partners-search></partners-search>
+            <partners-search v-on:update_search="updateSearch"></partners-search>
 
         </div>
+
         <div class="d-flex justify-content-center" v-if="loading">
             <div class="spinner-border" role="status">
                 <span class="sr-only"></span>
             </div>
         </div>
+
         <div v-if="!loading">
             <div class="container col">
-            <partner-item></partner-item>
-        </div>
+                <partner-item v-for="partner in partners" v-bind:partner="partner"></partner-item>
+            </div>
         </div>
     </div>
 </template>
@@ -50,15 +52,34 @@ import PartnerItem from "./partners/partnerItem";
 export default {
     name: "app",
     components: {PartnerItem, PartnersSearch},
+    methods:{
+        updateSearch:function (new_search, new_selected_type){
+            console.log('new parent '+ new_search +" "+ new_selected_type)
+            axios.get('/api/partners'+'?line='+new_search+'&type='+new_selected_type)
+                .then(response => {
+                    this.partners = response.data.data;
+                })
+                .catch(error => {
+                    console.log(error)
+                    this.errored = true;
+                }).finally(() => {
+                this.loading = false;
+            })
+
+        }
+    },
     data() {
         return {
             partners: [],
+            search_input:"",
+            selected_type:'address',
+            countries: [],
             errored: false,
             loading: true
         }
     },
     mounted() {
-        axios.get('/api/partners')
+        axios.get('/api/partners'+'?line='+this.search_input+'&type='+this.selected_type)
             .then(response => {
                 this.partners = response.data.data;
             })
@@ -68,6 +89,7 @@ export default {
             }).finally(() => {
             this.loading = false;
         })
+
     }
 }
 </script>

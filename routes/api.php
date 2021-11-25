@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\Api\PartnerController;
+use \App\Http\Controllers\Api\CountryController;
+use \App\Http\Controllers\Api\StateController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -21,5 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResources([
     'partners'=>PartnerController::class,
+    'countries'=>CountryController::class,
+    'states'=>StateController::class,
 ]);
 

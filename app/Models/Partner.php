@@ -29,10 +29,11 @@ class Partner extends Model
      */
     protected $fillable = ['company', 'status', 'logo', 'address', 'website', 'phone', 'countries_covered', 'states_covered'];
 
-//    public function countries()
-//    {
-//       return $this->hasMany(Country::class);
-//    }
-
+    public function scopeFilter($query, $search_line, $search_type)
+    {
+        return $search_line !== "" ?
+            $query->where($search_type, 'LIKE', '%' . $search_line . '%') :
+            $query;
+    }
 
 }

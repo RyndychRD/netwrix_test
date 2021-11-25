@@ -3,19 +3,20 @@
         <div class="card-body row">
             <div
                 class="col-md-3 col-sm-12 mb-sm-5 mb-md-1 d-flex justify-content-md-center justify-content-sm-start">
-                <img src="/img/standard-logo-distributor-new.png">
+<!--               TODO закрепить размер-->
+                <img :src=partner.logo>
             </div>
             <div class="col-md-5 col-sm-12  mb-sm-5 mb-md-1 d-flex flex-column justify-content-center">
-                <h2 class="fw-bold" style="font-family: OpenSans;"> Tango Technology </h2>
-                <label>Sydney, Level 7, 171 Clarence Street</label>
+                <h2 class="fw-bold" style="font-family: OpenSans;"> {{partner.company}} </h2>
+                <label style="font-family: OpenSans;">{{partner.address}}</label>
             </div>
             <div
                 class="col-md-2 col-sm-12  mb-sm-5 mb-md-1 d-flex flex-column justify-content-around border-end">
-                <a href="#">Website</a>
-                <label>+61 2 8001 0250</label>
+                <a :href=partner.website style="font-family: OpenSans;">Website</a>
+                <label style="font-family: OpenSans;">{{partner.phone}}</label>
             </div>
             <div class="col-md-2 col-sm-12 ">
-                <label>Distributor</label>
+                <label style="font-family: OpenSans;">{{partner.status}}</label>
             </div>
         </div>
 
@@ -25,6 +26,7 @@
 
 <script>
 export default {
+    props:['partner'],
     name: "partnerItem"
 }
 </script>

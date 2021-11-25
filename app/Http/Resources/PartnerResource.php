@@ -15,7 +15,6 @@ class PartnerResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
             'company' => $this->company,
             'status' => $this->status,
             'logo' => $this->logo,

@@ -14,9 +14,12 @@ class PartnerController extends Controller
      *
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        return PartnerResource::collection(Partner::all());
+        $search_line = $request->line;
+        $search_type = $request->type;
+
+        return PartnerResource::collection(Partner::filter($search_line,$search_type)->get());
     }
 
     /**
