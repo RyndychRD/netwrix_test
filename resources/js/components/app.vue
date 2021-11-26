@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container d-flex justify-content-xl-start justify-content-sm-center my-4">
+        <div class="container d-flex justify-content-xl-start justify-content-center my-4">
             <img src="/img/netwrix_logo.png">
         </div>
         <div class="d-flex flex-column justify-content-center"
