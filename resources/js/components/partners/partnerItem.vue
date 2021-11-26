@@ -7,18 +7,18 @@
                 </div>
             </div>
             <div class="col-xl-5 col-sm-12  mb-sm-3 mb-xl-1 d-flex flex-column justify-content-center">
-                <h2 class="fw-bold" > {{ partner.company }} </h2>
-                <label >{{ partner.address }}</label>
+                <h2 class="fw-bold"> {{ partner.company }} </h2>
+                <label>{{ partner.address }}</label>
                 <hr class="d-xl-none">
             </div>
 
             <div
                 class="col-xl-2 col-sm-12  mb-sm-3 mb-xl-1 d-flex flex-column justify-content-around vertical-line ">
-                <a :href=partner.website >Website</a>
-                <label >{{ partner.phone }}</label>
+                <a :href=partner.website>Website</a>
+                <label>{{ partner.phone }}</label>
             </div>
             <div class="col-xl-2 col-sm-12 ">
-                <label >{{ partner.status }}</label>
+                <label>{{ partner.status }}</label>
             </div>
         </div>
 

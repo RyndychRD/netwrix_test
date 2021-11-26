@@ -29,10 +29,10 @@
         <div class="d-flex justify-content-center bg-warning" v-if="Object.keys(partners).length === 0 && !loading">
             Your search parameteres did not match any partners. Please try different search
         </div>
-            <div class="container col">
+        <div class="container col">
 
-                <partner-item v-for="partner in partners" v-bind:partner="partner"></partner-item>
-            </div>
+            <partner-item v-for="partner in partners" v-bind:partner="partner"></partner-item>
+        </div>
 
     </div>
 </template>
@@ -45,9 +45,9 @@ import PartnerItem from "./partners/partnerItem";
 export default {
     name: "app",
     components: {PartnerItem, PartnersSearch},
-    methods:{
-        updateSearch:function (new_search, new_selected_type){
-            axios.get('/api/partners'+'?line='+new_search+'&type='+new_selected_type)
+    methods: {
+        updateSearch: function (new_search, new_selected_type) {
+            axios.get('/api/partners' + '?line=' + new_search + '&type=' + new_selected_type)
                 .then(response => {
                     this.partners = response.data.data;
                 })
@@ -63,15 +63,15 @@ export default {
     data() {
         return {
             partners: [],
-            search_input:"",
-            selected_type:'address',
+            search_input: "",
+            selected_type: 'address',
             countries: [],
             errored: false,
             loading: true
         }
     },
     mounted() {
-        axios.get('/api/partners'+'?line='+this.search_input+'&type='+this.selected_type)
+        axios.get('/api/partners' + '?line=' + this.search_input + '&type=' + this.selected_type)
             .then(response => {
                 this.partners = response.data.data;
             })
@@ -87,13 +87,17 @@ export default {
 </script>
 
 <style>
-* { font-family:Open Sans; }
-.main_label{
+* {
+    font-family: Open Sans;
+}
+
+.main_label {
     display: block;
     text-align: center;
     font-weight: bold
 }
-.main_label_small{
+
+.main_label_small {
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
